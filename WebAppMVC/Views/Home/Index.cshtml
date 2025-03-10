@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Product>
+
+@await Html.PartialAsync("Partials/ProductList/_ProductList", Model)
+<h1>@ViewData["Title"]</h1>
+@{
+    var products = ProductService.GetProducts();
+}

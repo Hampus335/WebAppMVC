@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@(string.IsNullOrEmpty(ViewData["Title"] as string) ? "WebAppMVC" : ViewData["Title"])</title>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/WebAppMVC.styles.css" asp-append-version="true">
+</head>
+<body>
+    <div class="wrapper">
+        @await Html.PartialAsync("Partials/_Header")
+            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                @if (ViewContext.RouteData.Values["controller"]?.ToString() != "Auth")
+                {
+                    <a asp-area="Home" asp-action="Index">Home</a>
+                    <a asp-area="About" asp-action="About">About Us</a>
+                    <a asp-area="Contacts" asp-action="Contact">Contacts</a>
+                }
+                else
+                {
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+                }
+                <a asp-controller="Auth" asp-action="Signup">Sign Up</a>
+                <a asp-controller="Auth" asp-action="Signin">Sign In</a>
+                <a asp-controller="Auth" asp-action="Signout">Sign Out</a>
+            </nav>
+            </nav>
+        <main>
+            @RenderBody()
+        </main>
+        @await Html.PartialAsync("Partials/_Footer")
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

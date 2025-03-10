@@ -1,0 +1,4 @@
+﻿@foreach (var product in ProductService.GetProducts())
+{
+    @await Html.PartialAsync("Partials/ProductList/_ProductListItem", product)
+}
