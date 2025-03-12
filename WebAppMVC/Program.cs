@@ -1,8 +1,10 @@
+using Infrastructure.Repositories;
 using WebAppMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ProductService>(); 
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ClientRepository>();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
