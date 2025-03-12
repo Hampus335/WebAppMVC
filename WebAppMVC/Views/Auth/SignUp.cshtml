@@ -1,4 +1,4 @@
-﻿@model SignUpForm
+﻿@model SignUpViewModel
 @{
     ViewData["Title"] = "Sign Up";
 }
@@ -8,31 +8,39 @@
 
         <form method="post" novalidate>
             <div class="mb-3">
-                <label asp-for="FirstName" class="form-label">First Name</label>
-                <input asp-for="FirstName" class="form-control">
-                <span asp-validation-for="FirstName"></span>
+                <label asp-for="FormData.FirstName" class="form-label"></label>
+                <input asp-for="FormData.FirstName" class="form-control">
+                <span asp-validation-for="FormData.FirstName"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="LastName" class="form-label">Last Name</label>
-                <input asp-for="LastName" class="form-control">
-                <span asp-validation-for="LastName"></span>
+                <label asp-for="FormData.LastName" class="form-label"></label>
+                <input asp-for="FormData.LastName" class="form-control">
+                <span asp-validation-for="FormData.LastName"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" class="form-control">
-                <span asp-validation-for="Email"></span>
+                <label asp-for="FormData.Email" class="form-label"></label>
+                <input asp-for="FormData.Email" class="form-control">
+                <span asp-validation-for="FormData.Email"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Password" class="form-label">Password</label>
-                <input asp-for="Password" class="form-control">
-                <span asp-validation-for="Password"></span>
+                <label asp-for="FormData.Password" class="form-label"></label>
+                <input asp-for="FormData.Password" class="form-control" value="@Model?.FormData.Password">
+                <span asp-validation-for="FormData.Password"></span>
             </div>
             <div class="mb-5">
-                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
-                <input asp-for="ConfirmPassword" class="form-control">
-                <span asp-validation-for="ConfirmPassword"></span>
+                <label asp-for="FormData.ConfirmPassword" class="form-label"></label>
+                <input asp-for="FormData.ConfirmPassword" class="form-control" value="@Model?.FormData.ConfirmPassword">
+                <span asp-validation-for="FormData.ConfirmPassword"></span>
             </div>
-            <button type="submit" class="btn btn-blue">SUBMIT</button>
+
+            <div class="mb-3">
+                <select asp-for="FormData.ClientId" class="form-control">
+                    <option value="0" disabled sele>-- Select Client --</option>
+                </select>
+                <span asp-validation-for="FormData.ClientId"></span>
+            </div>
+
+            <button type="submit" class="btn btn-blue">Submit</button>
         </form>
 
     </div>

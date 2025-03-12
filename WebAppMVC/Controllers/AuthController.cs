@@ -6,17 +6,24 @@ namespace WebAppMVC.Controllers
 {
     public class AuthController : Controller
     {
+        private SignUpViewModel _signUpViewModel = new();
         public IActionResult SignUp()
         {
-            return View();
+            return View(_signUpViewModel);
         }
         [HttpPost]
         public IActionResult SignUp(SignUpForm formData)
         {
             if (!ModelState.IsValid)
-                return View();
-            else
+            {
+                if (!ModelState.IsValid)
+                {
+                    _signUpViewModel.FormData = formData;
+                    return View(_signUpViewModel);
+                }
                 return View(formData);
+            }
+            return View();
         }
         [Route("signin")]
         public IActionResult SignIn()
