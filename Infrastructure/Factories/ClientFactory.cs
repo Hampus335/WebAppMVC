@@ -5,7 +5,7 @@ namespace Infrastructure.Factories;
 
 public class ClientFactory
 {
-    public Client? Create(Client form) => new()
+    public Client? Create(ClientEntity form) => new()
     {
         Name = form.Name
     };

@@ -1,23 +1,18 @@
 ﻿using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
+using System.Threading.Tasks;
 using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController(SignUpViewModel signUpViewModel) : Controller
     {
-        private readonly ClientService _clientService;
-        private SignUpViewModel _signUpViewModel;
+        private readonly SignUpViewModel _signUpViewModel = signUpViewModel;
 
-        public AuthController(ClientService clientService)
+        public async Task<IActionResult> SignUp()
         {
-            _clientService = clientService;
-            _signUpViewModel = new SignUpViewModel(_clientService);
-        }
-
-        public IActionResult SignUp()
-        {
+            await _signUpViewModel.PopulateClientOptionsAsync();
             return View(_signUpViewModel);
         }
 

@@ -1,9 +1,9 @@
-﻿using WebAppMVC.Models;
+﻿using Infrastructure.Models;
 
 namespace WebAppMVC.Services;
 public class ProductService
 {
-    private List<Product> _products= new List<Product>
+    private List<Product> _products = new List<Product>
     {
         new Product { Id = 1, Name = "Product 1" },
         new Product { Id = 2, Name = "Product 2" },

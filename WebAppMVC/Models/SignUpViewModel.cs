@@ -8,11 +8,12 @@ namespace WebAppMVC.Models
         public SignUpViewModel(ClientService clientService)
         {
             _clientService = clientService;
+            Task.Run(PopulateClientOptionsAsync);
         }
         public SignUpForm FormData { get; set; } = new();
         public List<SelectListItem> ClientOptions = [];
 
-        public async Task PopulateClientOptions()
+        public async Task PopulateClientOptionsAsync()
         {
             var clients = await _clientService.GetClientsAsync();
             ClientOptions = [.. clients.Select(x => new SelectListItem

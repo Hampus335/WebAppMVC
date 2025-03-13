@@ -1,7 +1,10 @@
-﻿@model IEnumerable<Product>
+﻿@using Infrastructure.Models
+@model IEnumerable<Product>
+
+@inject Product product 
 
 @await Html.PartialAsync("Partials/ProductList/_ProductList", Model)
 <h1>@ViewData["Title"]</h1>
 @{
-    var products = ProductService.GetProducts();
+    var product = ProductService.GetProducts();
 }

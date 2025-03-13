@@ -21,7 +21,7 @@ public class    ClientRepository(DataContext dataContext)
             await _context.AddAsync(clientEntity);
             var result = await _context.SaveChangesAsync();
             return result;
-        }
+        }   
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
@@ -33,8 +33,8 @@ public class    ClientRepository(DataContext dataContext)
 
     public async Task<IEnumerable<ClientEntity>> GetAllAsync()
     {
-        var enteties = await _context.Clients.ToListAsync();
-        return enteties;
+        var entities = await _context.Clients.ToListAsync();
+        return entities;
     }
 
     public async Task<ClientEntity?> GetAsync(Expression<Func<ClientEntity, bool>> expression)
